@@ -1,0 +1,56 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Student score
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Student score</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-input placeholder="Student id" [(ngModel)] = "studentID"></ion-input>
+  <ion-button expand="block" fill="outline" (click)="showScore()">Show score</ion-button>
+  <div *ngIf="score$ | async as sc">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Student score</ion-card-title>
+      </ion-card-header>
+    
+      <ion-card-content>
+        <p>ID: {{sc.id}}</p>
+        <p>Question1: {{sc.score.Q1}}</p>
+        <p>Question2: {{sc.score.Q2}}</p>
+        <p>Question3: {{sc.score.Q3}}</p>
+        <p>Question4: {{sc.score.Q4}}</p>
+        <p>Question5: {{sc.score.Q5}}</p>
+        <p>Total: {{sc.score.Total}}</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <ion-item>
+    <ion-input placeholder="Enter max score" [(ngModel)] = "max"></ion-input>
+    <ion-input placeholder="Enter min score" [(ngModel)] = "min"></ion-input>
+  </ion-item>
+    <ion-button expand="block" fill="outline" (click)="showScoreRange()">Show all score</ion-button>
+  <div *ngIf="score2$ | async as sc2">
+    <ion-card *ngFor="let sc of sc2">
+      <ion-card-header>
+        <ion-card-title>Student score</ion-card-title>
+      </ion-card-header>
+    
+      <ion-card-content>
+        <p>ID: {{sc.id}}</p>
+        <p>Question1: {{sc.score.Q1}}</p>
+        <p>Question2: {{sc.score.Q2}}</p>
+        <p>Question3: {{sc.score.Q3}}</p>
+        <p>Question4: {{sc.score.Q4}}</p>
+        <p>Question5: {{sc.score.Q5}}</p>
+        <p>Total: {{sc.score.Total}}</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
